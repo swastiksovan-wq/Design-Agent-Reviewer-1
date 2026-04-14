@@ -18,12 +18,14 @@ Usage:
     python design_review_agent.py --figma-url "..." --output review.md
 """
 
+from __future__ import annotations
 import argparse
 import base64
 import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import anthropic
 
@@ -94,8 +96,8 @@ def encode_image(image_path: str) -> tuple[str, str]:
 
 def build_review_prompt(
     skill_text: str,
-    focus_areas: list[str] | None = None,
-    figma_context: str | None = None,
+    focus_areas: Optional[list[str]] = None,
+    figma_context: Optional[str] = None,
 ) -> str:
     """Build the system + user prompt for the design review."""
     focus_instruction = ""
@@ -142,7 +144,7 @@ def build_review_prompt(
 
 def review_screenshot(
     screenshot_path: str,
-    focus_areas: list[str] | None = None,
+    focus_areas: Optional[list[str]] = None,
 ) -> str:
     """Review a screenshot against the design skill."""
     skill_text = load_skill()
@@ -182,7 +184,7 @@ def review_screenshot(
 
 def review_figma(
     figma_url: str,
-    focus_areas: list[str] | None = None,
+    focus_areas: Optional[list[str]] = None,
 ) -> str:
     """
     Review a Figma design using Claude with Figma MCP tools.
