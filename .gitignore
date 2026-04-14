@@ -19,14 +19,12 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Claude Code (keep skills and mcp.json, ignore local/session data)
+# Claude Code session data (keep skills and mcp.json)
 .claude/settings.local.json
 .claude/launch.json
 .claude/plans/
 .claude/memory/
 
-# Jupyter
-.ipynb_checkpoints/
-
 # Output
-*.csv
+reviews/
+*.review.txt
